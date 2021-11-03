@@ -1,8 +1,9 @@
 import React from "react";
 import back_ground from "../image/party.jpg";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
-function Login() {
+function Login({ history }) {
   return (
     <div>
       <Container>
@@ -26,7 +27,7 @@ function Login() {
             <Content>Password</Content>
             <Input></Input>
           </LoginContainer>
-          <Button>Submit</Button>
+          <Button onClick={() => history.push("/home")}>Submit</Button>
           <LineButtonContainer>
             <LineButton>Sign Up</LineButton>
             <LineButton>Forgot ID or Password?</LineButton>
@@ -115,6 +116,8 @@ const Input = styled.input`
   border-radius: 15px;
   border-width: 2px;
   border-color: #e895bc;
+  font-size: 20px;
+  padding-left: 10px;
 `;
 
 const Button = styled.button`
@@ -152,4 +155,4 @@ const LineButton = styled.button`
   }
 `;
 
-export default Login;
+export default withRouter(Login);
