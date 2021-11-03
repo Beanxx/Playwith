@@ -144,7 +144,7 @@ function SignupPage() {
             />
             <form>
               <input type="checkbox" />I accept Terms of{" "}
-              <a href="">Use&Privacy Policy</a>
+              <a href="#/">Use&Privacy Policy</a>
             </form>
             <button
               style={{
