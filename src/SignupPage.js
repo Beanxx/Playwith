@@ -4,24 +4,26 @@ import styled from "styled-components";
 
 <img src={back_ground} resizeMode="cover" alt="profile" />;
 function SignupPage() {
-    return (
-        <div>
-            <Container>
-                <Box>
-                    <Title>Sign Up</Title>
-                    <Input placeholder="ID"></Input>
-                    <Input placeholder="Password"></Input>
-                    <Input placeholder="Confirm Password"></Input>
-                    <Input placeholder="Email Address"></Input>
-                    <Input placeholder="Phone Number"></Input>
-                    <Input placeholder="Full Name"></Input>
-                    <Content><Checkbox type="checkbox"></Checkbox>I accept The Terms of</Content>
-                    <LineButton>Use&Privacy Policy</LineButton>
-                    <Button>Create Account</Button>
-                </Box>
-            </Container>
-        </div>
-    );
+  return (
+    <div>
+      <Container>
+        <Box>
+          <Title>Sign Up</Title>
+          <Input placeholder="ID"></Input>
+          <Input placeholder="Password"></Input>
+          <Input placeholder="Confirm Password"></Input>
+          <Input placeholder="Email Address"></Input>
+          <Input placeholder="Phone Number"></Input>
+          <Input placeholder="Full Name"></Input>
+          <Content>
+            <Checkbox type="checkbox"></Checkbox>I accept The Terms of
+          </Content>
+          <LineButton>Use&Privacy Policy</LineButton>
+          <Button>Create Account</Button>
+        </Box>
+      </Container>
+    </div>
+  );
 }
 
 const Container = styled.div`
@@ -91,7 +93,7 @@ const Button = styled.button`
 const LineButton = styled.div`
   margin: 10px;
   padding: 5px;
-  color: #E870A9;
+  color: #e870a9;
   font-size: 17px;
   border-color: white;
   text-decoration: underline;
