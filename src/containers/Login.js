@@ -1,7 +1,7 @@
 import React from "react";
 import back_ground from "../image/party.jpg";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 function Login({ history }) {
   return (
@@ -29,7 +29,9 @@ function Login({ history }) {
           </LoginContainer>
           <Button onClick={() => history.push("/home")}>Submit</Button>
           <LineButtonContainer>
-            <LineButton>Sign Up</LineButton>
+            <Link to="/signup" style={{ textDecoration: "none" }}>
+              <LineButton>Sign Up</LineButton>
+            </Link>
             <LineButton>Forgot ID or Password?</LineButton>
           </LineButtonContainer>
         </Box>
