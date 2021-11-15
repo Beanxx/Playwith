@@ -41,7 +41,6 @@ const Title = styled.h1`
 
 const HeaderBlock = styled.div`
   width: 90%;
-  margin-bottom: 70px;
 `;
 
 export default Header;

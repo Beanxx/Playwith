@@ -7,6 +7,7 @@ function RoomCreate() {
   return (
     <HomeTemplate>
       <Header>파티룸 생성</Header>
+      <div style={{ margin: "35px" }} />
 
       <InputContainer>
         <Content>TITLE</Content>
@@ -56,7 +57,6 @@ function RoomCreate() {
           </option>
         </Select>
       </InputContainer>
-
       <Button>Create</Button>
     </HomeTemplate>
   );
