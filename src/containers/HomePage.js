@@ -26,7 +26,7 @@ function Home() {
 }
 
 const Greet = styled.h1`
-  font-size: 55px;
+  font-size: 40px;
   color: #5d5d5d;
 `;
 

@@ -1,14 +1,31 @@
-import React, { useState } from "react";
-import back_ground from "./image/birthday_cake.jpg";
+import React from "react";
+import back_ground from "../image/birthday_cake.jpg";
 import styled from "styled-components";
+import { BsArrowLeftShort } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 <img src={back_ground} resizeMode="cover" alt="profile" />;
 function SignupPage() {
   return (
     <div>
       <Container>
+        <LogoContainer>
+          <Explain>
+            <Logo>PlayWith</Logo>
+            Now
+            <br />
+            Let's enjoy the online
+            <br />
+            party with your friend
+          </Explain>
+        </LogoContainer>
         <Box>
-          <Title>Sign Up</Title>
+          <Header>
+            <Link to="/" style={{ textDecoration: "none", color: "#6799ff" }}>
+              <BsArrowLeftShort />
+            </Link>
+            <Title>Sign Up</Title>
+          </Header>
           <Input placeholder="ID"></Input>
           <Input placeholder="Password"></Input>
           <Input placeholder="Confirm Password"></Input>
@@ -36,25 +53,51 @@ const Container = styled.div`
   background-size: cover;
 `;
 
+const LogoContainer = styled.div`
+  display: flex;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30%;
+  height: 80%;
+  margin: 100px;
+  margin-top: 50px;
+  margin-left: 200px;
+`;
+
+const Explain = styled.div`
+  color: white;
+  font-size: 60px;
+  font-style: italic;
+`;
+
+const Logo = styled.div`
+  color: white;
+  font-size: 90px;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px gray;
+`;
+
 const Box = styled.div`
   display: flex;
   float: right;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   width: 25%;
   height: 80%;
   margin: 50px;
-  margin-top: 130px;
-  margin-right: 200px;
+  margin-top: 80px;
+  margin-right: 220px;
   border-radius: 30px;
-  opacity: 0.9;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
 `;
 
 const Title = styled.h1`
   color: #e895bc;
-  font-size: 50px;
+  font-size: 45px;
+  margin-left: 40px;
 `;
 
 const Content = styled.div`
@@ -70,6 +113,8 @@ const Input = styled.input`
   border-width: 2px;
   border-color: #e895bc;
   margin: 5px;
+  padding-left: 15px;
+  margin: 7px;
 `;
 
 const Checkbox = styled.input`
@@ -80,7 +125,7 @@ const Checkbox = styled.input`
 
 const Button = styled.button`
   width: 70%;
-  height: 50px;
+  height: 40px;
   background-color: #e895bc;
   border-radius: 50px;
   border-width: 0px;
@@ -91,12 +136,16 @@ const Button = styled.button`
 `;
 
 const LineButton = styled.div`
-  margin: 10px;
-  padding: 5px;
   color: #e870a9;
   font-size: 17px;
-  border-color: white;
   text-decoration: underline;
+  margin-bottom: 15px;
+`;
+
+const Header = styled.div`
+  font-size: 50px;
+  display: flex;
+  width: 350px;
 `;
 
 export default SignupPage;

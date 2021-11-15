@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
-import Login from "./containers/Login";
-import SignupPage from "./SignupPage";
-import Home from "./containers/Home";
-import RoomSearch from "./containers/Search";
-import RoomCreate from "./containers/Create";
+import Login from "./containers/LoginPage";
+import SignupPage from "./containers/SignupPage";
+import Home from "./containers/HomePage";
+import RoomSearch from "./containers/SearchPage";
+import RoomCreate from "./containers/CreatePage";
+import ForgotPage from "./containers/ForgotPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/home" component={Home} />
       <Route path="/create" component={RoomCreate} />
       <Route path="/search" component={RoomSearch} />
+      <Route path="/forgot" component={ForgotPage} />
     </div>
   );
 }

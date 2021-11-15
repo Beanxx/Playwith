@@ -3,13 +3,18 @@ import styled from "styled-components";
 import HomeTemplate from "../components/HomeTemplate";
 import Header from "../components/Header";
 
-function RoomSearch() {
+function RoomCreate() {
   return (
     <HomeTemplate>
       <Header />
-      파티룸 탐색 페이지
+      <Title>파티룸 생성</Title>
     </HomeTemplate>
   );
 }
 
-export default RoomSearch;
+const Title = styled.h1`
+  color: #e895bc;
+  font-size: 40px;
+`;
+
+export default RoomCreate;
