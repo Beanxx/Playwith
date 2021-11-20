@@ -8,6 +8,7 @@ import RoomSearch from "./containers/SearchPage";
 import RoomCreate from "./containers/CreatePage";
 import ForgotPage from "./containers/ForgotPage";
 import VerifyMailPage from "./containers/VerifyMailPage";
+import PartyRoom from "./containers/PartyRoomPage";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       <Route path="/create" component={RoomCreate} />
       <Route path="/search" component={RoomSearch} />
       <Route path="/forgot" component={ForgotPage} />
-      <Route path="/verify" component={VerifyMailPage}/>
+      <Route path="/verify" component={VerifyMailPage} />
+      <Route path="/partyroom" component={PartyRoom} />
     </div>
   );
 }
