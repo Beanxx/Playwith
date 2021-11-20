@@ -9,8 +9,8 @@ function Search({ onSubmit }){
     
     return (
         <Form onSubmit={handleSubmit}>
-            <Input name="filter" />
-            <Button>Search</Button>
+            <Input name="filter" placeholder="  Search here"/>
+            <Button>Click</Button>
         </Form>
     );
 }
