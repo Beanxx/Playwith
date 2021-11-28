@@ -1,16 +1,5 @@
-// const express = require("express");
-// const app = express();
-// const port = 3001;
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
-
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`);
-// });
-
 const express = require('express');
+const path = require('path')
 var mongoose = require('mongoose');
 const app = express();
 
@@ -26,15 +15,9 @@ db.on('error', function(err){
   console.log('DB ERROR : ', err);
 });
 
-app.set('view engine', 'ejs');
-app.use(express.static(__dirname+'../public'));
-
+// Port
 var port = 3000;
 app.listen(port, function(){
   console.log('test server listening at http://localhost:'+port);
 });
 
-// Routes
-app.get('/', function(req, res) {
-  res.redirect('../public/test.html');
-});
