@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 // Schema
 var roomListSchema = mongoose.Schema({
-    room_title:{type:String, required:true},
+    room_id:{type:Number},
+    room_title:{type:String},
     room_subject:{type:Number},
     room_theme:{type:Number},
     room_private:{type:Number},

@@ -26,16 +26,17 @@
           </thead>
   
           <tbody>
-            <% lists.forEach(function(list))
+            <% lists.forEach(function(list) { %>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><%= list.room_id %></td>
+              <td><%= list.room_title %></td>
+              <td><%= list.room_subject %></td>
+              <td><%= list.room_theme %></td>
+              <td><%= list.room_private %></td>
+              <td><%= list.room_pw %></td>
+              <td><%= list.room_count %></td>
             </tr>
+            <% }) %>
           </tbody>
         </table>
   </body>
