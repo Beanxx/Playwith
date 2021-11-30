@@ -21,3 +21,8 @@ app.listen(port, function(){
   console.log('test server listening at http://localhost:'+port);
 });
 
+// Other setting
+app.set('view engine', 'ejs');
+
+// Routes
+app.use('/', require('./routes/testRouter'));
