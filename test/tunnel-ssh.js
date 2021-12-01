@@ -40,6 +40,8 @@ const ssh_config = {
   //port: process.env.SSH_PORT,
   dstHost: 'playiwth-db-instance.cqtagxkl3688.ap-northeast-2.rds.amazonaws.com',
   dstPort: 4040,
+  localHost: '127.0.0.1',
+  localPort: 4040,
 }
 
 tunnel(ssh_config, (error, server) => {
@@ -48,7 +50,7 @@ tunnel(ssh_config, (error, server) => {
   } else if (server !== null) {
     mysql
     .createConnection({
-      host: '0.0.0.0',
+      host: '127.0.0.1',
       user: 'withplay',
       password: 'playwith123',
       database: 'playwith_db',
