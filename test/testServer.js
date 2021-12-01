@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 const app = express();
 
 // DB 연결
+//Mongo DB
+/*
 mongoose.connect("mongodb+srv://playwith:playwith1004@playwith.42mh4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 var db = mongoose.connection;
 
@@ -14,6 +16,7 @@ db.once('open', function(){
 db.on('error', function(err){
   console.log('DB ERROR : ', err);
 });
+*/
 
 // Port
 var port = 3000;
