@@ -1,12 +1,14 @@
 const express = require("express");
+const app = express();
 const mysql = require("mysql");
 const index = require("./routes/index.js");
 const dbconfig = require("./config/db.js");
 const db = mysql.createConnection(dbconfig);
+const cors = require("cors");
 
-const app = express();
-
-app.use('/index', index);
+app.use("/index", index);
+app.use(express.json());
+app.use(cors());
 
 app.set("port", process.env.PORT || 3001);
 
@@ -32,4 +34,25 @@ db.connect((err) => {
 
 app.listen(app.get("port"), () => {
   console.log("Express server listening on port " + app.get("port"));
+});
+
+app.get("/test", (req, res) => {
+  db.query("SELECT * from test", (error, rows) => {
+    if (error) throw error;
+    console.log("User info is: ", rows);
+    res.send(rows);
+  });
+});
+
+app.post("/register", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  db.query(
+    "INSERT INTO test (username, password) VALUES (?,?)",
+    [username, password],
+    (err, result) => {
+      console.log(err);
+    }
+  );
 });

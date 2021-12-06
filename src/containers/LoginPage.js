@@ -21,11 +21,11 @@ function Login({ history }) {
           <Title>Sign In</Title>
           <LoginContainer>
             <Content>ID</Content>
-            <Input></Input>
+            <Input autoComplete="user_id" name="user_id" />
           </LoginContainer>
           <LoginContainer>
             <Content>Password</Content>
-            <Input></Input>
+            <Input autoComplete="password" name="password" type="password" />
           </LoginContainer>
           <Button onClick={() => history.push("/home")}>Submit</Button>
           <LineButtonContainer>

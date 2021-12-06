@@ -1,11 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import back_ground from "../image/birthday_cake.jpg";
 import styled from "styled-components";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 <img src={back_ground} resizeMode="cover" alt="profile" />;
+
 function SignupPage() {
+  const [usernameReg, setUsernameReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
+
+  // axios
+  //   .get("http://localhost:3001/users")
+  //   .then(function (response) {
+  //     // handle success
+  //     console.log(response);
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   })
+  //   .then(function () {
+  //     // always executed
+  //   });
+
+  // axios
+  //   .post("http://localhost:3001/register", {
+  //     username: "test20",
+  //     password: "test20",
+  //   }) //성공시 then 실행
+  //   .then(function (response) {
+  //     console.log(response);
+  //   })
+  //   //실패 시 catch 실행
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+
+  const register = () => {
+    axios
+      .post("http://localhost:3001/register", {
+        username: usernameReg,
+        password: passwordReg,
+      }) //성공시 then 실행
+      .then(function (response) {
+        console.log(response);
+        console.jog("post success");
+      })
+      //실패 시 catch 실행
+      .catch(function (error) {
+        console.log(error);
+        console.jog("post fail");
+      });
+  };
+
+  const onChangeId = (e) => {
+    setUsernameReg(e.target.value);
+    console.log("ok");
+  };
+
+  const onChangePw = (e) => {
+    setPasswordReg(e.target.value);
+  };
+
   return (
     <div>
       <Container>
@@ -26,8 +84,18 @@ function SignupPage() {
             </Link>
             <Title>Sign Up</Title>
           </Header>
-          <Input placeholder="ID"></Input>
-          <Input placeholder="Password"></Input>
+          <Input
+            type="text"
+            defaultValue={usernameReg}
+            onChange={onChangeId}
+            placeholder="ID"
+          />
+          <Input
+            type="text"
+            defaultValue={passwordReg}
+            onChange={onChangePw}
+            placeholder="Password"
+          />
           <Input placeholder="Confirm Password"></Input>
           <Input placeholder="Email Address"></Input>
           <Input placeholder="Phone Number"></Input>
@@ -36,7 +104,7 @@ function SignupPage() {
             <Checkbox type="checkbox"></Checkbox>I accept The Terms of
           </Content>
           <LineButton>Use&Privacy Policy</LineButton>
-          <Button>Create Account</Button>
+          <Button onClick={register}>Create Account</Button>
         </Box>
       </Container>
     </div>
