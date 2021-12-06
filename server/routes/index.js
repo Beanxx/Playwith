@@ -1,8 +1,9 @@
 const express = require("express");
-const router = express.Router();
+const search = require('./search.js');
+const users = require('./users.js');
 
-router.get("/", (req, res) => {
-  res.send("hi");
-});
+const router = express.Router();
+router.use('/search', search);
+router.use('/users', users);
 
 module.exports = router;
