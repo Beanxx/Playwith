@@ -5,30 +5,30 @@ import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 
 function Login({ history }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
 
   const [loginStatus, setLoginStatus] = useState("");
 
   const onChangeId = (e) => {
-    setUsername(e.target.value);
+    setId(e.target.value);
   };
 
   const onChangePw = (e) => {
-    setPassword(e.target.value);
+    setPw(e.target.value);
   };
 
   const login = () => {
     axios
       .post("http://localhost:3001/login", {
-        username: username,
-        password: password,
+        user_id: id,
+        user_pw: pw,
       })
       .then((response) => {
         if (response.data.message) {
           setLoginStatus(response.data.message);
         } else {
-          setLoginStatus(response.data[0].username);
+          setLoginStatus(response.data[0].user_id);
         }
       });
   };
@@ -53,7 +53,7 @@ function Login({ history }) {
             <Input
               name="user_id"
               type="text"
-              defaultValue={username}
+              defaultValue={id}
               onChange={onChangeId}
               placeholder="ID"
             />
@@ -63,13 +63,13 @@ function Login({ history }) {
             <Input
               name="user_password"
               type="password"
-              defaultValue={password}
+              defaultValue={pw}
               onChange={onChangePw}
               placeholder="Password"
             />
           </LoginContainer>
           <Button onClick={login}>Submit</Button>
-          <p>{loginStatus}</p>
+          {loginStatus}
           <LineButtonContainer>
             <Link to="/signup" style={{ textDecoration: "none" }}>
               <LineButton>Sign Up</LineButton>

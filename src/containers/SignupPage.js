@@ -8,14 +8,20 @@ import axios from "axios";
 <img src={back_ground} resizeMode="cover" alt="profile" />;
 
 function SignupPage() {
-  const [usernameReg, setUsernameReg] = useState("");
-  const [passwordReg, setPasswordReg] = useState("");
+  const [idReg, setIdReg] = useState("");
+  const [pwReg, setPwReg] = useState("");
+  const [emailReg, setEmailReg] = useState("");
+  const [nameReg, setNameReg] = useState("");
+  const [phoneReg, setPhoneReg] = useState("");
 
   const register = () => {
     axios
       .post("http://localhost:3001/register", {
-        username: usernameReg,
-        password: passwordReg,
+        user_id: idReg,
+        user_pw: pwReg,
+        user_email: emailReg,
+        user_name: nameReg,
+        user_phone: phoneReg,
       })
       .then((response) => {
         if (response.data.message) {
@@ -28,11 +34,23 @@ function SignupPage() {
   };
 
   const onChangeId = (e) => {
-    setUsernameReg(e.target.value);
+    setIdReg(e.target.value);
   };
 
   const onChangePw = (e) => {
-    setPasswordReg(e.target.value);
+    setPwReg(e.target.value);
+  };
+
+  const onChangeEmail = (e) => {
+    setEmailReg(e.target.value);
+  };
+
+  const onChangeName = (e) => {
+    setNameReg(e.target.value);
+  };
+
+  const onChangePhone = (e) => {
+    setPhoneReg(e.target.value);
   };
 
   return (
@@ -49,28 +67,42 @@ function SignupPage() {
           </Explain>
         </LogoContainer>
         <Box>
-          <Header>
-            <Link to="/" style={{ textDecoration: "none", color: "#6799ff" }}>
-              <BsArrowLeftShort />
-            </Link>
-            <Title>Sign Up</Title>
-          </Header>
+          <Header />
+          <Link to="/" style={{ textDecoration: "none", color: "#6799ff" }}>
+            <BsArrowLeftShort />
+          </Link>
+          <Title>Sign Up</Title>
           <Input
             type="text"
-            defaultValue={usernameReg}
+            defaultValue={idReg}
             onChange={onChangeId}
             placeholder="ID"
           />
           <Input
             type="text"
-            defaultValue={passwordReg}
+            defaultValue={pwReg}
             onChange={onChangePw}
             placeholder="Password"
           />
-          <Input placeholder="Confirm Password"></Input>
-          <Input placeholder="Email Address"></Input>
-          <Input placeholder="Phone Number"></Input>
-          <Input placeholder="Full Name"></Input>
+          <Input type="text" placeholder="Confirm Password"></Input>
+          <Input
+            type="email"
+            defaultValue={emailReg}
+            onChange={onChangeEmail}
+            placeholder="Email Address"
+          ></Input>
+          <Input
+            type="text"
+            defaultValue={phoneReg}
+            onChange={onChangePhone}
+            placeholder="Phone Number"
+          ></Input>
+          <Input
+            type="text"
+            defaultValue={nameReg}
+            onChange={onChangeName}
+            placeholder="Full Name"
+          ></Input>
           <Content>
             <Checkbox type="checkbox"></Checkbox>I accept The Terms of
           </Content>
