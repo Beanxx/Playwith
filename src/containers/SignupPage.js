@@ -1,58 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import back_ground from "../image/birthday_cake.jpg";
 import styled from "styled-components";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 <img src={back_ground} resizeMode="cover" alt="profile" />;
-
 function SignupPage() {
-  const [idReg, setIdReg] = useState("");
-  const [pwReg, setPwReg] = useState("");
-  const [emailReg, setEmailReg] = useState("");
-  const [nameReg, setNameReg] = useState("");
-  const [phoneReg, setPhoneReg] = useState("");
-
-  const register = () => {
-    axios
-      .post("http://localhost:3001/register", {
-        user_id: idReg,
-        user_pw: pwReg,
-        user_email: emailReg,
-        user_name: nameReg,
-        user_phone: phoneReg,
-      })
-      .then((response) => {
-        if (response.data.message) {
-          console.log(response);
-        } else {
-          console.log(response);
-        }
-      });
-    alert("회원가입이 완료되었습니다.");
-  };
-
-  const onChangeId = (e) => {
-    setIdReg(e.target.value);
-  };
-
-  const onChangePw = (e) => {
-    setPwReg(e.target.value);
-  };
-
-  const onChangeEmail = (e) => {
-    setEmailReg(e.target.value);
-  };
-
-  const onChangeName = (e) => {
-    setNameReg(e.target.value);
-  };
-
-  const onChangePhone = (e) => {
-    setPhoneReg(e.target.value);
-  };
-
   return (
     <div>
       <Container>
@@ -67,47 +20,23 @@ function SignupPage() {
           </Explain>
         </LogoContainer>
         <Box>
-          <Header />
-          <Link to="/" style={{ textDecoration: "none", color: "#6799ff" }}>
-            <BsArrowLeftShort />
-          </Link>
-          <Title>Sign Up</Title>
-          <Input
-            type="text"
-            defaultValue={idReg}
-            onChange={onChangeId}
-            placeholder="ID"
-          />
-          <Input
-            type="text"
-            defaultValue={pwReg}
-            onChange={onChangePw}
-            placeholder="Password"
-          />
-          <Input type="text" placeholder="Confirm Password"></Input>
-          <Input
-            type="email"
-            defaultValue={emailReg}
-            onChange={onChangeEmail}
-            placeholder="Email Address"
-          ></Input>
-          <Input
-            type="text"
-            defaultValue={phoneReg}
-            onChange={onChangePhone}
-            placeholder="Phone Number"
-          ></Input>
-          <Input
-            type="text"
-            defaultValue={nameReg}
-            onChange={onChangeName}
-            placeholder="Full Name"
-          ></Input>
+          <Header>
+            <Link to="/" style={{ textDecoration: "none", color: "#6799ff" }}>
+              <BsArrowLeftShort />
+            </Link>
+            <Title>Sign Up</Title>
+          </Header>
+          <Input placeholder="ID"></Input>
+          <Input placeholder="Password"></Input>
+          <Input placeholder="Confirm Password"></Input>
+          <Input placeholder="Email Address"></Input>
+          <Input placeholder="Phone Number"></Input>
+          <Input placeholder="Full Name"></Input>
           <Content>
             <Checkbox type="checkbox"></Checkbox>I accept The Terms of
           </Content>
           <LineButton>Use&Privacy Policy</LineButton>
-          <Button onClick={register}>Create Account</Button>
+          <Button>Create Account</Button>
         </Box>
       </Container>
     </div>

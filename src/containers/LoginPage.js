@@ -1,38 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import back_ground from "../image/party.jpg";
 import styled from "styled-components";
 import { withRouter, Link } from "react-router-dom";
-import axios from "axios";
 
 function Login({ history }) {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
-
-  const [loginStatus, setLoginStatus] = useState("");
-
-  const onChangeId = (e) => {
-    setId(e.target.value);
-  };
-
-  const onChangePw = (e) => {
-    setPw(e.target.value);
-  };
-
-  const login = () => {
-    axios
-      .post("http://localhost:3001/login", {
-        user_id: id,
-        user_pw: pw,
-      })
-      .then((response) => {
-        if (response.data.message) {
-          setLoginStatus(response.data.message);
-        } else {
-          setLoginStatus(response.data[0].user_id);
-        }
-      });
-  };
-
   return (
     <div>
       <Container>
@@ -50,26 +21,13 @@ function Login({ history }) {
           <Title>Sign In</Title>
           <LoginContainer>
             <Content>ID</Content>
-            <Input
-              name="user_id"
-              type="text"
-              defaultValue={id}
-              onChange={onChangeId}
-              placeholder="ID"
-            />
+            <Input></Input>
           </LoginContainer>
           <LoginContainer>
             <Content>Password</Content>
-            <Input
-              name="user_password"
-              type="password"
-              defaultValue={pw}
-              onChange={onChangePw}
-              placeholder="Password"
-            />
+            <Input></Input>
           </LoginContainer>
-          <Button onClick={login}>Submit</Button>
-          {loginStatus}
+          <Button onClick={() => history.push("/home")}>Submit</Button>
           <LineButtonContainer>
             <Link to="/signup" style={{ textDecoration: "none" }}>
               <LineButton>Sign Up</LineButton>
