@@ -36,14 +36,6 @@ app.listen(app.get("port"), () => {
   console.log("Express server listening on port " + app.get("port"));
 });
 
-app.get("/test", (req, res) => {
-  db.query("SELECT * from test", (error, rows) => {
-    if (error) throw error;
-    console.log("User info is: ", rows);
-    res.send(rows);
-  });
-});
-
 app.post("/register", (req, res) => {
   const id = req.body.user_id;
   const pw = req.body.user_pw;
