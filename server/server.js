@@ -1,12 +1,10 @@
 const express = require("express");
 const mysql = require("mysql");
-const index = require("./routes/index.js");
+const index = require("./routes/index");
 const dbconfig = require("./config/db.js");
 const db = mysql.createConnection(dbconfig);
 
 const app = express();
-
-app.use('/index', index);
 
 app.set("port", process.env.PORT || 3001);
 
