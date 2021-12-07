@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h2>파티룸 탐색</h2>
+        <table border="1">
+            <thead>
+                <th>순번</th>
+                <th>제목</th>
+                <th>주제</th>
+                <th>테마</th>
+                <th>인원</th>
+                <th>구분</th>
+            </thead>
+            <tbody>
+                <% if(locals.data){%>
+                    <% for(let i=0; i<data.length; i++) {%> 
+                        <tr>
+                            <td><%= data[i].room_id%></td>
+                            <td><%= data[i].room_title%></td>
+                            <td><%= data[i].room_subject%></td>
+                            <td> 
+                                <% if(data[i].room_theme == 1) { %>
+                                    일반
+                                <% }  else if (data[i].room_theme == 2) { %>
+                                    생일
+                                <% } else if (data[i].room_theme == 3) { %>
+                                    할로윈
+                                <% } else if (data[i].room_theme == 4) { %>
+                                    크리스마스
+                                <% } %>
+                            </td>
+                            <td>
+                                <%= data[i].room_count%>/4
+                            </td>
+                            <td>
+                                <% if(data[i].room_private == 1) { %>
+                                    비밀방
+                                <% }  else { %>
+                                    공개방
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </body>
+</html>

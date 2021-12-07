@@ -14,14 +14,6 @@ app.get("/", (req, res) => {
   res.send("playwith backend");
 });
 
-app.get("/users", (req, res) => {
-  db.query("SELECT * from users", (error, rows) => {
-    if (error) throw error;
-    console.log("User info is: ", rows);
-    res.send(rows);
-  });
-});
-
 db.connect((err) => {
   if (err) {
     console.log(err.message);

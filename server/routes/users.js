@@ -7,6 +7,14 @@ const db = mysql.createConnection(dbconfig);
 
 const app = express();
 
+db.connect((err) => {
+  if (err) {
+    console.log(err.message);
+    return;
+  }
+  console.log("users table connected.");
+});
+
 app.get('/', (req, res) => {
     db.query("SELECT * from users", (error, rows) => {
       if (error) throw error;
