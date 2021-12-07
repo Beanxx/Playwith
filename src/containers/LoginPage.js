@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import back_ground from "../image/party.jpg";
 import styled from "styled-components";
 import { withRouter, Link } from "react-router-dom";
+import axios from "axios";
 
 function Login({ history }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loginStatus, setLoginStatus] = useState("");
+
+  const onChangeId = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const onChangePw = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const login = () => {
+    axios
+      .post("http://localhost:3001/login", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        if (response.data.message) {
+          setLoginStatus(response.data.message);
+        } else {
+          setLoginStatus(response.data[0].username);
+        }
+      });
+  };
+
   return (
     <div>
       <Container>
@@ -21,13 +50,26 @@ function Login({ history }) {
           <Title>Sign In</Title>
           <LoginContainer>
             <Content>ID</Content>
-            <Input autoComplete="user_id" name="user_id" />
+            <Input
+              name="user_id"
+              type="text"
+              defaultValue={username}
+              onChange={onChangeId}
+              placeholder="ID"
+            />
           </LoginContainer>
           <LoginContainer>
             <Content>Password</Content>
-            <Input autoComplete="password" name="password" type="password" />
+            <Input
+              name="user_password"
+              type="password"
+              defaultValue={password}
+              onChange={onChangePw}
+              placeholder="Password"
+            />
           </LoginContainer>
-          <Button onClick={() => history.push("/home")}>Submit</Button>
+          <Button onClick={login}>Submit</Button>
+          <p>{loginStatus}</p>
           <LineButtonContainer>
             <Link to="/signup" style={{ textDecoration: "none" }}>
               <LineButton>Sign Up</LineButton>

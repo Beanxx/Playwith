@@ -56,3 +56,24 @@ app.post("/register", (req, res) => {
     }
   );
 });
+
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  db.query(
+    "SELECT * FROM test WHERE username = ? AND password = ?",
+    [username, password],
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({ message: "아이디 및 비밀번호를 잘못 입력하였습니다." });
+      }
+    }
+  );
+});

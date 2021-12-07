@@ -11,53 +11,24 @@ function SignupPage() {
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
 
-  // axios
-  //   .get("http://localhost:3001/users")
-  //   .then(function (response) {
-  //     // handle success
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     // handle error
-  //     console.log(error);
-  //   })
-  //   .then(function () {
-  //     // always executed
-  //   });
-
-  // axios
-  //   .post("http://localhost:3001/register", {
-  //     username: "test20",
-  //     password: "test20",
-  //   }) //성공시 then 실행
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   //실패 시 catch 실행
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-
   const register = () => {
     axios
       .post("http://localhost:3001/register", {
         username: usernameReg,
         password: passwordReg,
-      }) //성공시 then 실행
-      .then(function (response) {
-        console.log(response);
-        console.jog("post success");
       })
-      //실패 시 catch 실행
-      .catch(function (error) {
-        console.log(error);
-        console.jog("post fail");
+      .then((response) => {
+        if (response.data.message) {
+          console.log(response);
+        } else {
+          console.log(response);
+        }
       });
+    alert("회원가입이 완료되었습니다.");
   };
 
   const onChangeId = (e) => {
     setUsernameReg(e.target.value);
-    console.log("ok");
   };
 
   const onChangePw = (e) => {
