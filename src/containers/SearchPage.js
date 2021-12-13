@@ -1,12 +1,45 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import HomeTemplate from "../components/HomeTemplate";
 import Header from "../components/Header";
 import RoomTable from "../components/RoomTable";
 import faker from "faker/locale/ko";
+import axios from "axios";
 
 faker.seed(100);
 
 function RoomSearch() {
+
+      const [inputData, setInputData] = useState([{
+        room_id: '',
+        room_title: '',
+        room_subject: '',
+        room_private: '',
+        room_pw: '',
+        room_count: '',
+        room_theme: ''
+      }])
+    
+ 
+    useEffect(async() => {
+        try{
+            const res = await axios.get("http://localhost:3001/search")
+            const _inputData = await res.data.map((rowData) => (
+                {
+                  room_id: rowData.room_id,
+                  room_title: rowData.room_title,
+                  room_subject: rowData.room_subject,
+                  room_private: rowData.room_private,
+                  room_pw: rowData.room_pw,
+                  room_count: rowData.room_count,
+                  room_theme: rowData.room_theme
+                })
+            )
+            setInputData(inputData.concat(_inputData))
+        } catch(e){
+            console.error(e.message)
+        }
+    },[])
+
   const columns = useMemo(
     () => [
       {
@@ -35,18 +68,15 @@ function RoomSearch() {
 
   const data = useMemo(
     () => 
-      Array(53)
-        .fill()
-        .map(() => ({
-          id: faker.datatype.number({ 'min': 0, 'max':100000 }),
-          title: faker.lorem.sentence(),
-          subject: faker.datatype.number({ 'min': 0, 'max':3 }), //0:일반, 1:게임, 2:연예인, 3:취미
-          thema: faker.datatype.number({ 'min': 0, 'max':3 }), //0:일반, 1:생일, 2:할로윈, 3:크리스마스
-          count: faker.datatype.number({ 'min': 1, 'max':4 }), //1-4
-          private: faker.datatype.number({ 'min': 0, 'max':1 }), //0:public, 1:private
-        })),
-      []
-  );
+    inputData.map(rowData => ({
+      id: rowData.room_id,
+      title: rowData.room_title,
+      subject: rowData.room_subject,
+      thema: rowData.room_theme,
+      count: rowData.room_count,
+      private: rowData.room_private
+    }))
+  )
 
   return (
     <HomeTemplate>

@@ -24,6 +24,14 @@ app.get("/users", (req, res) => {
   });
 });
 
+app.get("/search", (req, res) => {
+  db.query("SELECT * from room_list", (error, rows) => {
+    if (error) throw error;
+    //console.log("Room info is: ", rows);
+    res.send(rows);
+  });
+});
+
 db.connect((err) => {
   if (err) {
     console.log(err.message);
