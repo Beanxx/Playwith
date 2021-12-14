@@ -3,7 +3,7 @@ import styled from "styled-components";
 import back_ground from "../image/normal_theme.jpg";
 import RoomMenu from "../components/RoomMenu";
 import io from 'socket.io-client';
-import Video from '../components/Video'; //css 담겨있음
+import Video from '../components/video'; //css 담겨있음
 import { WebRTCUser } from '../types';
 
 const pc_config = {
