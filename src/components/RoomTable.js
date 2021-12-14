@@ -54,7 +54,7 @@ function RoomTable({ columns, data }){
                             {row.cells.map((cell) => (
                                 <TableTD {...cell.getCellProps()}>{cell.render("Cell")}</TableTD>
                             ))}
-                            <TableTD>2</TableTD>
+                            <TableTD></TableTD>
                         </TableTR>
                     );
                 })}
