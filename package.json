@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "type": "commonjs",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@babel/preset-typescript": "^7.16.0",
     "@testing-library/jest-dom": "^5.11.4",

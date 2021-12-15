@@ -20,7 +20,7 @@ function Login({ history }) {
 
   const login = () => {
     axios
-      .post("http://localhost:3001/login", {
+      .post("http://localhost:3001/api/login", {
         user_id: id,
         user_pw: pw,
       })

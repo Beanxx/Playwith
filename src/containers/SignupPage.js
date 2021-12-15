@@ -16,7 +16,7 @@ function SignupPage() {
 
   const register = () => {
     axios
-      .post("http://localhost:3001/register", {
+      .post("http://localhost:3001/api/register", {
         user_id: idReg,
         user_pw: pwReg,
         user_email: emailReg,
@@ -25,12 +25,11 @@ function SignupPage() {
       })
       .then((response) => {
         if (response.data.message) {
-          console.log(response);
+          console.log(response.data.message);
         } else {
           console.log(response);
         }
       });
-    alert("회원가입이 완료되었습니다.");
   };
 
   const onChangeId = (e) => {
