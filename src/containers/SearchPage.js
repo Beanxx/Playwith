@@ -8,37 +8,35 @@ import axios from "axios";
 faker.seed(100);
 
 function RoomSearch() {
+  const [inputData, setInputData] = useState([
+    {
+      room_id: "",
+      room_title: "",
+      room_subject: "",
+      room_private: "",
+      room_pw: "",
+      room_count: "",
+      room_theme: "",
+    },
+  ]);
 
-      const [inputData, setInputData] = useState([{
-        room_id: '',
-        room_title: '',
-        room_subject: '',
-        room_private: '',
-        room_pw: '',
-        room_count: '',
-        room_theme: ''
-      }])
-    
- 
-    useEffect(async() => {
-        try{
-            const res = await axios.get("http://localhost:3001/search")
-            const _inputData = await res.data.map((rowData) => (
-                {
-                  room_id: rowData.room_id,
-                  room_title: rowData.room_title,
-                  room_subject: rowData.room_subject,
-                  room_private: rowData.room_private,
-                  room_pw: rowData.room_pw,
-                  room_count: rowData.room_count,
-                  room_theme: rowData.room_theme
-                })
-            )
-            setInputData(inputData.concat(_inputData))
-        } catch(e){
-            console.error(e.message)
-        }
-    },[])
+  useEffect(async () => {
+    try {
+      const res = await axios.get("http://localhost:3001/api/search");
+      const _inputData = await res.data.map((rowData) => ({
+        room_id: rowData.room_id,
+        room_title: rowData.room_title,
+        room_subject: rowData.room_subject,
+        room_private: rowData.room_private,
+        room_pw: rowData.room_pw,
+        room_count: rowData.room_count,
+        room_theme: rowData.room_theme,
+      }));
+      setInputData(inputData.concat(_inputData));
+    } catch (e) {
+      console.error(e.message);
+    }
+  }, []);
 
   const columns = useMemo(
     () => [
@@ -66,17 +64,16 @@ function RoomSearch() {
     []
   );
 
-  const data = useMemo(
-    () => 
-    inputData.map(rowData => ({
+  const data = useMemo(() =>
+    inputData.map((rowData) => ({
       id: rowData.room_id,
       title: rowData.room_title,
       subject: rowData.room_subject,
       thema: rowData.room_theme,
       count: rowData.room_count,
-      private: rowData.room_private
+      private: rowData.room_private,
     }))
-  )
+  );
 
   return (
     <HomeTemplate>

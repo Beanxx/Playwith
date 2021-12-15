@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
 const db = require("./config/db");
 const cors = require("cors");
 
@@ -11,6 +10,14 @@ app.set("port", process.env.PORT || 3001);
 
 app.get("/", (req, res) => {
   res.send("playwith backend");
+});
+
+app.get("/api/search", (req, res) => {
+  db.query("SELECT * from room_list", (error, rows) => {
+    if (error) throw error;
+    console.log("Room info is: ", rows);
+    res.send(rows);
+  });
 });
 
 app.get("/users", (req, res) => {
