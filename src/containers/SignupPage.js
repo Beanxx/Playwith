@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 <img src={back_ground} resizeMode="cover" alt="profile" />;
+
 function SignupPage() {
   const [idReg, setIdReg] = useState("");
   const [pwReg, setPwReg] = useState("");

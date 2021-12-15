@@ -1,12 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
-
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-/* GET users listing. */
-
+// users table data 값들 보여줌.
 router.get("/", (req, res) => {
   db.query("SELECT * from users", (error, rows) => {
     if (error) throw error;
@@ -15,6 +13,7 @@ router.get("/", (req, res) => {
   });
 });
 
+// 회원가입 데이터를 users table에 넣어줌.
 router.post("/", (req, res, next) => {
   const param = [
     req.body.user_id,
@@ -24,6 +23,7 @@ router.post("/", (req, res, next) => {
     req.body.user_name,
   ];
 
+  // 비밀번호 암호화하여 db에 저장
   bcrypt.hash(param[1], saltRounds, (error, hash) => {
     param[1] = hash;
     db.query(
