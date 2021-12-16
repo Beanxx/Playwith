@@ -35,6 +35,7 @@ function RoomCreate() {
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
+    setCount(1);
   };
 
   const onChangePw = (e) => {
@@ -47,7 +48,15 @@ function RoomCreate() {
   };
 
   const onChangeSubject = (e) => {
-    setSubject(e.target.value);
+    var target = document.getElementById("selectSubjectId");
+    var val = target.options[target.selectedIndex].value;
+    setSubject(val);
+  }
+
+  const onChangeTheme = (e) => {
+    var target = document.getElementById("selectThemeId");
+    var val = target.options[target.selectedIndex].value;
+    setTheme(val);
   }
 
   return (
@@ -74,7 +83,6 @@ function RoomCreate() {
         <Content>SUBJECT</Content>
         <Select
           id="selectSubjectId" 
-          defaultValue={subject}
           onChange={onChangeSubject}
           >
           <option value="일반">
@@ -97,7 +105,9 @@ function RoomCreate() {
 
       <InputContainer>
         <Content>THEME</Content>
-        <Select>
+        <Select
+          id="selectThemeId" 
+          onChange={onChangeTheme}>
           <option key="normal" type="number" value="1">
             일반
           </option>
