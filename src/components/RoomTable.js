@@ -38,7 +38,6 @@ function RoomTable({ columns, data }){
             <TableHead>
                 {headerGroups.map((headerGroup) => (
                     <TableTR {...headerGroup.getHeaderGroupProps()}>
-                        <TableTH>순번</TableTH>
                         {headerGroup.headers.map((column) => (
                             <TableTH {...column.getHeaderProps(column.getSortByToggleProps())}>
                                 {column.render("Header")}
@@ -53,7 +52,7 @@ function RoomTable({ columns, data }){
                     prepareRow(row)
                     return(
                         <TableTR {...row.getRowProps()}>
-                            <TableTD>{pageIndex*7+(i+1)}</TableTD>
+                            {/* <TableTD>{...cell.getCellProps()}</TableTD> */}
                             {row.cells.map((cell) => (
                                 <TableTD {...cell.getCellProps()}>{cell.render("Cell")}</TableTD>
                             ))}
