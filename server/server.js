@@ -20,24 +20,8 @@ app.get("/api/search", (req, res) => {
   });
 });
 
-app.get("/users", (req, res) => {
-  db.query("SELECT * from users", (error, rows) => {
-    if (error) throw error;
-    console.log("User info is: ", rows);
-    res.send(rows);
-  });
-});
-
 app.listen(app.get("port"), () => {
   console.log("Express server listening on port " + app.get("port"));
-});
-
-app.get("/api/test", (req, res) => {
-  db.query("SELECT * from test", (error, rows) => {
-    if (error) throw error;
-    console.log("User info is: ", rows);
-    res.send(rows);
-  });
 });
 
 app.get("/api/register", (req, res) => {
@@ -59,7 +43,9 @@ app.post("/api/register", (req, res) => {
     "INSERT INTO users (user_id, user_pw, user_email, user_phone, user_name) VALUES (?,?,?,?,?)",
     [id, pw, email, phone, name],
     (err, result) => {
-      console.log(err);
+      if (err) {
+        res.send({ err: err });
+      }
     }
   );
 });
@@ -77,9 +63,9 @@ app.post("/api/login", (req, res) => {
       }
 
       if (result.length > 0) {
-        res.send(result);
+        res.send({ message: "Login Success" });
       } else {
-        res.send({ message: "아이디 및 비밀번호를 잘못 입력하였습니다." });
+        res.send({ message: "Login Fail" });
       }
     }
   );

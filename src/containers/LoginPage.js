@@ -3,8 +3,11 @@ import back_ground from "../image/party.jpg";
 import styled from "styled-components";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router";
 
-function Login({ history }) {
+function Login() {
+  const history = useHistory();
+
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
@@ -25,11 +28,12 @@ function Login({ history }) {
         user_pw: pw,
       })
       .then((response) => {
-        if (response.data.message) {
+        if (response.status >= 200 && response.status <= 205) {
           setLoginStatus(response.data.message);
         } else {
           setLoginStatus(response.data[0].user_id);
         }
+        // history.push("/home");
       });
   };
 
