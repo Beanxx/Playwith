@@ -9,7 +9,7 @@ function Home() {
   return (
     <HomeTemplate>
       <Header />
-      <Greet>님 환영합니다.</Greet>
+      <Greet>김송이님 환영합니다.</Greet>
       <SelectContainer>
         <SelectBox>
           <Link to="/create" style={{ textDecoration: "none", color: "white" }}>
