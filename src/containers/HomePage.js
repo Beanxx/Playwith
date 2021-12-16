@@ -3,12 +3,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import HomeTemplate from "../components/HomeTemplate";
 import Header from "../components/Header";
+import SignupPage from "./SignupPage";
 
 function Home() {
   return (
     <HomeTemplate>
       <Header />
-      <Greet>OOO님 환영합니다.</Greet>
+      <Greet>님 환영합니다.</Greet>
       <SelectContainer>
         <SelectBox>
           <Link to="/create" style={{ textDecoration: "none", color: "white" }}>

@@ -63,9 +63,9 @@ app.post("/api/login", (req, res) => {
       }
 
       if (result.length > 0) {
-        res.send({ message: "Login Success" });
+        res.send({ message: "Success" });
       } else {
-        res.send({ message: "Login Fail" });
+        res.send({ message: "Fail" });
       }
     }
   );

@@ -40,10 +40,9 @@ function SignupPage({ history }) {
         user_phone: phoneReg,
       })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status >= 200 && response.status <= 205) {
           alert("회원가입에 성공하였습니다.");
-          console.log(response.data.message);
-          // return history.push("/");
+          history.push("/");
         } else {
           alert("회원가입에 실패하였습니다.");
           console.log(response);
