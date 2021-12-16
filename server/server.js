@@ -50,6 +50,24 @@ app.post("/api/register", (req, res) => {
   );
 });
 
+app.post("/api/create", (req, res) => {
+  const id = req.body.room_id;
+  const title = req.body.room_title;
+  const subject = req.body.room_subject;
+  const private = req.body.room_private;
+  const pw = req.body.room_private;
+  const count = req.body.room_count;
+  const theme = req.body.room_theme;
+
+  db.query(
+    "INSERT INTO room_list (room_id, room_title, room_subject, room_private, room_pw, room_count, room_theme) VALUES (?,?,?,?,?,?,?)",
+    [id, title, subject, private, pw, count, theme],
+    (err, result) => {
+      console.log(err);
+    }
+  );
+});
+
 app.post("/api/login", (req, res) => {
   const id = req.body.user_id;
   const pw = req.body.user_pw;

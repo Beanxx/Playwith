@@ -1,9 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import HomeTemplate from "../components/HomeTemplate";
 import Header from "../components/Header";
+import axios from "axios";
 
 function RoomCreate() {
+  const [id, setId] = useState("");
+  const [title, setTitle] = useState("");
+  const [subject, setSubject] = useState("");
+  const [isPrivate, setPrivate] = useState("");
+  const [pw, setPw] = useState("");
+  const [count, setCount] = useState("");
+  const [theme, setTheme] = useState("");
+  
+  const create = () => {
+    axios
+      .post("http://localhost:3001/api/create", {
+        room_id: id,
+        room_title: title,
+        room_subject: subject,
+        room_private: isPrivate,
+        room_pw: pw,
+        room_count: count,
+        room_theme: theme,
+      })
+      .then((res) => {
+        if (res.data.message) {
+          console.log(res.data.message);
+        } else {
+          console.log(res);
+        }
+      });
+  };
+
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const onChangePw = (e) => {
+    setPw(e.target.value);
+    if (e.target.value !== null){
+      setPrivate(1)
+    } else {
+      setPrivate(0);
+    }
+  };
+
+  const onChangeSubject = (e) => {
+    setSubject(e.target.value);
+  }
+
   return (
     <HomeTemplate>
       <Header>파티룸 생성</Header>
@@ -11,30 +57,39 @@ function RoomCreate() {
 
       <InputContainer>
         <Content>TITLE</Content>
-        <Input></Input>
+        <Input
+          defaultValue={title}
+          onChange={onChangeTitle}/>
       </InputContainer>
 
       <InputContainer>
         <Content>PASSWORD</Content>
-        <Input></Input>
+        <Input
+          defaultValue={pw}
+          onChange={onChangePw}
+          />
       </InputContainer>
 
       <InputContainer>
         <Content>SUBJECT</Content>
-        <Select>
-          <option key="default" value="default">
+        <Select
+          id="selectSubjectId" 
+          defaultValue={subject}
+          onChange={onChangeSubject}
+          >
+          <option value="일반">
             일반
           </option>
-          <option key="talk" value="talk">
+          <option value="수다">
             수다
           </option>
-          <option key="game" value="game">
+          <option value="게임">
             게임
           </option>
-          <option key="star" value="start">
+          <option value="연예인">
             연예인
           </option>
-          <option key="hobby" value="hobby">
+          <option value="취미">
             취미
           </option>
         </Select>
@@ -43,21 +98,21 @@ function RoomCreate() {
       <InputContainer>
         <Content>THEME</Content>
         <Select>
-          <option key="normal" value="normal">
+          <option key="normal" type="number" value="1">
             일반
           </option>
-          <option key="birthday" value="birthday">
+          <option key="birthday" type="number" value="2">
             생일
           </option>
-          <option key="halloween" value="halloween">
+          <option key="halloween" type="number" value="3">
             할로윈
           </option>
-          <option key="christmas" value="christmas">
+          <option key="christmas" type="number" value="4">
             크리스마스
           </option>
         </Select>
       </InputContainer>
-      <Button>Create</Button>
+      <Button onClick={create}>Create</Button>
     </HomeTemplate>
   );
 }
