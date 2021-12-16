@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useTable, useGlobalFilter, useSortBy, usePagination } from "react-table";
 import Search from "../components/Search";
+import { Link } from "react-router-dom";
+import lock_icon from "../image/lock_icon.png";
+import enter_icon from "../image/enter_icon.png";
 
 function RoomTable({ columns, data }){
     const { 
@@ -54,7 +57,11 @@ function RoomTable({ columns, data }){
                             {row.cells.map((cell) => (
                                 <TableTD {...cell.getCellProps()}>{cell.render("Cell")}</TableTD>
                             ))}
-                            <TableTD></TableTD>
+                            <TableTD>
+                                <Link to="/partyroom">
+                                    <img src={enter_icon}></img>
+                                </Link>
+                            </TableTD>
                         </TableTR>
                     );
                 })}
